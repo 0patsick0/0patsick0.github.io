@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>创建时光胶囊</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h2>创建你的时光胶囊</h2>
+  </header>
+
+  <form id="capsule-form">
+    <label for="message">写下对未来的寄语：</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+
+    <label for="open-date">选择打开日期：</label>
+    <input type="date" id="open-date" name="open-date" required>
+
+    <button type="submit" class="button">保存胶囊</button>
+  </form>
+
+  <script>
+    document.getElementById("capsule-form").addEventListener("submit", function(event) {
+      event.preventDefault(); // 阻止默认表单提交行为
+
+      // 获取用户输入的内容和日期
+      const message = document.getElementById("message").value;
+      const openDate = document.getElementById("open-date").value;
+
+      // 将数据存储到Local Storage
+      localStorage.setItem("capsuleMessage", message);
+      localStorage.setItem("capsuleOpenDate", openDate);
+
+      // 清空表单并显示确认消息
+      document.getElementById("capsule-form").reset();
+      alert("你的时光胶囊已保存！");
+    });
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>查看时光胶囊</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h2>查看你的时光胶囊</h2>
+    <p>这里将展示你创建的胶囊内容。</p>
+  </header>
+  <div id="capsule-content">
+    <!-- 这里将显示时光胶囊内容 -->
+  </div>
+
+  <script>
+    // 从Local Storage中读取胶囊数据
+    const message = localStorage.getItem("capsuleMessage");
+    const openDate = localStorage.getItem("capsuleOpenDate");
+
+    // 检查是否有保存的胶囊内容
+    if (message && openDate) {
+      document.getElementById("capsule-content").innerHTML = `
+        <p><strong>寄语内容：</strong> ${message}</p>
+        <p><strong>设定的打开日期：</strong> ${openDate}</p>
+      `;
+    } else {
+      document.getElementById("capsule-content").innerHTML = "<p>目前还没有保存的胶囊内容。</p>";
+    }
+    // 检查到期时间
+    const today = new Date().toISOString().split("T")[0]; // 获取当天日期
+      if (openDate <= today) {
+        document.getElementById("capsule-content").innerHTML += "<p><strong>提示：</strong>你的胶囊已到期，欢迎查看！</p>";
+      }
+    } else {
+      document.getElementById("capsule-content").innerHTML = "<p>目前还没有保存的胶囊内容。</p>";
+    }
+  </script>
+  
+  <!-- 后续会添加JavaScript动态显示内容 -->
+</body>
+</html>
+
