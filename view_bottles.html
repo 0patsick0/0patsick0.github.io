@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="styles.css">
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>查看漂流瓶</title>
+</head>
+<body>
+    <h1>漂流瓶内容</h1>
+
+        <form method="POST">
+            <textarea name="reply" rows="4" cols="50" placeholder="在这里写下你的回复..." required></textarea><br><br>
+            <input type="hidden" name="bottle_id" value="{{ bottle.id }}">
+            <button type="submit">回复</button>
+        </form>
+
+        <p>没有漂流瓶可以查看，快去发布一个吧！</p>
+
+    <br>
+    <a href="post_bottle.html">发布漂流瓶</a>
+</body>
+</html>
